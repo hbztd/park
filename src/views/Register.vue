@@ -4,23 +4,16 @@
       <el-input v-model="form.account" clearable v-on:blur="checkAccount"/>
       {{ info.text1 }}
     </el-form-item>
-    <el-form-item label="用户权限">
-      <el-select v-model="form.role" placeholder="请设置用户权限">
-        <el-option label="普通管理员" value="普通管理员"></el-option>
-        <el-option label="高级管理员" value="高级管理员"></el-option>
-      </el-select>
-      {{ info.text2 }}
-    </el-form-item>
     <el-form-item label="用户昵称">
-      <el-input v-model="form.username" clearable aria-required/>
+      <el-input v-model="form.userName" clearable aria-required/>
       {{ info.text3 }}
     </el-form-item>
     <el-form-item label="真实姓名">
-      <el-input v-model="form.realname" clearable/>
+      <el-input v-model="form.realName" clearable/>
       {{ info.text4 }}
     </el-form-item>
     <el-form-item label="用户密码">
-      <el-input v-model="form.password" clearable type="password"/>
+      <el-input v-model="form.userPwd" clearable type="password"/>
       {{ info.text5 }}
     </el-form-item>
     <el-form-item label="确认密码">
@@ -28,7 +21,7 @@
       {{ info.text6 }}
     </el-form-item>
     <el-form-item label="联系电话">
-      <el-input v-model="form.phone" clearable/>
+      <el-input v-model="form.userPhone" clearable/>
       {{ info.text7 }}
     </el-form-item>
     <el-form-item>
@@ -44,16 +37,16 @@ export default {
     return {
       form: {
         account: "",
-        role: "",
-        username: "",
-        realname: "",
-        password: "",
+        // role: "",
+        userName: "",
+        realName: "",
+        userPwd: "",
         password2: "",
-        phone: ""
+        userPhone: ""
       },
       info: {
         text1: "",
-        text2: "",
+        // text2: "", 权限设置已删除
         text3: "",
         text4: "",
         text5: "",
@@ -97,7 +90,7 @@ export default {
         }
     },
     checkAccount() {
-      // this.form.username此处作用域不能获取
+      // this.form.userName此处作用域不能获取
       const account = this.form.account;
       let params = this.$qs.stringify({
         account
@@ -155,7 +148,7 @@ export default {
       }
     },
 
-    "form.username": function(newVal) {
+    "form.userName": function(newVal) {
       if (newVal === "") {
         this.info.text3 = "该字段不能为空";
       } else if (newVal.length > 10) {
@@ -164,7 +157,7 @@ export default {
         this.info.text3 = "";
       }
     },
-    "form.realname": function(newVal) {
+    "form.realName": function(newVal) {
       if (newVal === "") {
         this.info.text4 = "该字段不能为空";
       } else if (!/^[\u0391-\uFFE5]+$/.test(newVal)) {
@@ -175,7 +168,7 @@ export default {
         this.info.text4 = "";
       }
     },
-    "form.password": function(newVal) {
+    "form.userPwd": function(newVal) {
       if (newVal === "") {
         this.info.text5 = "该字段不能为空";
       }
@@ -195,13 +188,13 @@ export default {
     "form.password2": function(newVal) {
       if (newVal === "") {
         this.info.text6 = "该字段不能为空";
-      } else if (this.form.password !== newVal) {
+      } else if (this.form.userPwd !== newVal) {
         this.info.text6 = "两次密码不一致";
       } else {
         this.info.text6 = "";
       }
     },
-    "form.phone": function(newVal) {
+    "form.userPhone": function(newVal) {
       if (newVal === "") {
         this.info.text7 = "该字段不能为空";
       } else if (!/^[1][3,4,5,7,8][0-9]{9}$/.test(newVal)) {

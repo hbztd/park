@@ -30,6 +30,26 @@ export default new Router({
       component: () => import('./views/Register.vue')
     },
     {
+      path: '/user',
+      name: 'user',
+      component: () => import('./views/UserManager.vue')
+    },
+    {
+      path: '/user2',
+      name: 'user2',
+      component: () => import('./components/UserEdit.vue')
+    },
+    {
+      path: '/user3',
+      name: 'user3',
+      component: () => import('./views/UserPermission.vue')
+    },
+    {
+      path: '/user4',
+      name: 'user4',
+      component: () => import('./components/UserChangePwd.vue')
+    },
+    {
       path: '/seat',
       name: 'seat',
       component: () => import('./views/Seat.vue')

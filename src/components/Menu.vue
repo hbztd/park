@@ -56,14 +56,23 @@
         switch (key) {
           case '1-1':
             this.$router.push({
-              name: ''
+              name: 'register'
             });
             break;
           case '1-2':
+            this.$router.push({
+              name: 'user'
+            });
             break;
           case '1-3':
+            this.$router.push({
+              name: 'user3'
+            });
             break;
           case '1-4':
+            this.$router.push({
+              name: 'user4'
+            });
             break;
           case '2-1':
             this.$router.push({
@@ -106,13 +115,16 @@
             });
             break;
           case '6':
+            this.$axios
+              .post('/api/logout')
+              .then(() =>
+                this.$router.push({
+                  name: 'login'
+                })
+              )
+              .catch(() => this.$message.error("退出登录失败"))
             break;
         }
-        //   不知为何出错 暂不解决
-        //    this.$router.push({
-        //         name
-        //     })
-        console.log('tag', '')
       }
     }
   };

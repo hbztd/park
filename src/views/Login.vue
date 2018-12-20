@@ -17,7 +17,7 @@
         </el-form-item>
          
         <el-form-item>
-          <el-button type="primary" @click="onSubmit" :disabled="isValid">创建</el-button>
+          <el-button type="primary" @click="onSubmit" :disabled="isValid">登录</el-button>
           <el-button @click="onCancel">取消</el-button>
         </el-form-item>
       </el-form>
