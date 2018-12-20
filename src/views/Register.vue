@@ -1,37 +1,48 @@
 <template>
-  <el-form :model="form" label-width="80px">
-    <el-form-item label="用户账号">
-      <el-input v-model="form.account" clearable v-on:blur="checkAccount"/>
-      {{ info.text1 }}
-    </el-form-item>
-    <el-form-item label="用户昵称">
-      <el-input v-model="form.userName" clearable aria-required/>
-      {{ info.text3 }}
-    </el-form-item>
-    <el-form-item label="真实姓名">
-      <el-input v-model="form.realName" clearable/>
-      {{ info.text4 }}
-    </el-form-item>
-    <el-form-item label="用户密码">
-      <el-input v-model="form.userPwd" clearable type="password"/>
-      {{ info.text5 }}
-    </el-form-item>
-    <el-form-item label="确认密码">
-      <el-input v-model="form.password2" clearable type="password"/>
-      {{ info.text6 }}
-    </el-form-item>
-    <el-form-item label="联系电话">
-      <el-input v-model="form.userPhone" clearable/>
-      {{ info.text7 }}
-    </el-form-item>
-    <el-form-item>
-      <el-button type="primary" @click="onSubmit" :disabled="isValid">创建</el-button>
-      <el-button @click="onCancel">取消</el-button>
-    </el-form-item>
-  </el-form>
+    <el-container>
+        <el-header>
+            <p style="font-size:20px; text-align:center;">AI智能停车场</p>
+        </el-header>
+        <el-row>
+            <Menu/>
+            <el-col :span="10">
+                <el-form :model="form" label-width="80px">
+                    <el-form-item label="用户账号">
+                        <el-input v-model="form.account" clearable v-on:blur="checkAccount"/>
+                        {{ info.text1 }}
+                    </el-form-item>
+                    <el-form-item label="用户昵称">
+                        <el-input v-model="form.userName" clearable aria-required/>
+                        {{ info.text3 }}
+                    </el-form-item>
+                    <el-form-item label="真实姓名">
+                        <el-input v-model="form.realName" clearable/>
+                        {{ info.text4 }}
+                    </el-form-item>
+                    <el-form-item label="用户密码">
+                        <el-input v-model="form.userPwd" clearable type="password"/>
+                        {{ info.text5 }}
+                    </el-form-item>
+                    <el-form-item label="确认密码">
+                        <el-input v-model="form.password2" clearable type="password"/>
+                        {{ info.text6 }}
+                    </el-form-item>
+                    <el-form-item label="联系电话">
+                        <el-input v-model="form.userPhone" clearable/>
+                        {{ info.text7 }}
+                    </el-form-item>
+                    <el-form-item>
+                        <el-button type="primary" @click="onSubmit" :disabled="isValid">创建</el-button>
+                        <el-button @click="onCancel">取消</el-button>
+                    </el-form-item>
+                </el-form>
+            </el-col>
+        </el-row>
+    </el-container>
 </template>
 
 <script>
+    import Menu from '../components/Menu'
 export default {
   data() {
     return {
@@ -73,6 +84,10 @@ export default {
                     this.$alert('注册失败','系统消息',{
                         confirmButtonText: '确认'
                     })
+                } else {
+                  this.$alert(`${res.data.msg}`,{
+                    confirmButtonText: '确认'
+                  })
                 }
             })
             .catch(() => {
@@ -203,6 +218,9 @@ export default {
         this.info.text7 = "";
       }
     }
+  },
+  components: {
+    Menu
   }
 };
 </script>
