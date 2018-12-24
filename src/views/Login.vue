@@ -44,7 +44,7 @@ export default {
         text2: "",
         text3: ""
       },
-      codeUrl: 'http://localhost:8080/user/getCode.do'
+      codeUrl: '/api/user/getCode.do'
     };
   },
   computed: {
@@ -92,7 +92,7 @@ export default {
       this.form.verifyCode = ''
     },
     changeCode() {
-      this.codeUrl = 'http://localhost:8080/user/getCode.do?' + 'time=' + (new Date()).valueOf();
+      this.codeUrl = '/api/user/getCode.do?' + 'time=' + (new Date()).valueOf();
     }
     
   },
